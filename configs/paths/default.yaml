@@ -1,0 +1,55 @@
+# path to root directory
+# this requires PROJECT_ROOT environment variable to exist
+# you can replace it with "." if you want the root to be the current working directory
+root_dir: ${oc.env:PROJECT_ROOT}
+
+# path to data directory
+data_dir: ${paths.root_dir}/data/
+
+# path to logging directory
+log_dir: ${paths.root_dir}/logs/
+
+# path to output directory, created dynamically by hydra
+# path generation pattern is specified in `configs/hydra/default.yaml`
+# use it to store all files generated during the run, like ckpts and metrics
+output_dir: ${hydra:runtime.output_dir}
+
+# path to working directory
+work_dir: ${hydra:runtime.cwd}
+
+# path to DNS background noise audio files
+background_noise_root: ${paths.root_dir}/../../scratch/DNS/noise/
+
+# path to lrs3 audio files
+lrs3_root: ${paths.data_dir}lrs3/
+lrs3_audio_root: ${paths.root_dir}/../../scratch/lrs3_wavs/
+lrs3_video_root: ${paths.root_dir}/../../scratch/vtp_features/lrs3/
+# lrs3_video_root: ${paths.root_dir}/../../scratch/lrs_imp/lrs3/
+lrs3_speaker_emb_root: ${paths.root_dir}/../../scratch/lrs_imp/lrs3/pretrain_speaker_embeddings/
+lrs3_face_emb_root: ${paths.root_dir}/../../scratch/lrs3_face_embeddings/
+
+
+librispeech_root: ${paths.data_dir}librispeech/
+librispeech_audio_root: ${paths.root_dir}/../../scratch/Librispeech/
+librispeech_speaker_emb_root: ${paths.root_dir}/../../scratch/Librispeech/speaker_embedding/
+
+# path to lrs2 audio files
+lrs2_root: ${paths.data_dir}lrs2_cleaned/
+lrs2_audio_root: ${paths.root_dir}/../../scratch/lrs2_wavs/
+# lrs2_video_root: ${paths.root_dir}/../../scratch/lrs2_features/feats_full/lrs2_mega_pretrain/
+lrs2_video_root: ${paths.root_dir}/../../scratch/vtp_features/lrs2/
+lrs2_speaker_emb_root: ${paths.root_dir}/../../scratch/lrs2_embeddings/
+
+# path to DNS noise audio files
+noise_dir: ${paths.root_dir}/../../scratch/DNS/noise/
+
+# path to model checkpoints
+# voiceformer: ${paths.root_dir}/../../../../work/akam/readToListern/checkpointlr3-2s-v2-3layer-46.ckpt
+# voiceformer: ${paths.root_dir}/../../../../work/akam/readToListern/checkpointlr2-2s-v20-105.ckpt
+voiceformer: ${paths.root_dir}/../../../../work/akam/readToListern/2022-05-20/V227LS23-2S/checkpoints/epoch22-step33206.ckpt 
+voiceformerav: ${paths.root_dir}/../../../../work/akam/codes/speaker_separation/outputs/VF27A-2SPN14/checkpoints/epoch154-step742621.ckpt
+voiceformerav23: ${paths.root_dir}/../../../../work/akam/readToListern/checkpointlr2-2s-v223-81.ckpt
+demucs: ${paths.root_dir}/pretrained_models/dns48-denoiser.th
+voicformerAVnew: ${paths.root_dir}/logs/train/runs/2023-05-21/07-21-52/checkpoints/epoch_057.ckpt
+speaker_embedding: ${paths.root_dir}/pretrained_models/EncoderClassifier-8f6f7fdaa9628acf73e21ad1f99d5f83/embedding_model.ckpt
+

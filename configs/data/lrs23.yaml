@@ -1,0 +1,19 @@
+_target_: src.data.lrs_datamodule.LRSDataModule
+data_root: ["${paths.lrs3_root}", "${paths.lrs3_root}"]
+audio_root: ["${paths.lrs3_audio_root}", "${paths.lrs3_audio_root}"]
+video_root: ["${paths.lrs3_video_root}", "${paths.lrs3_video_root}"]
+speaker_emb_root: ["${paths.lrs3_speaker_emb_root}", "${paths.lrs3_speaker_emb_root}"]
+background_noise_root: ${paths.background_noise_root}
+batch_size: 32
+num_workers: 8
+pin_memory: True
+channels: 1
+speakers: 2
+max_data: -1
+load_features: True
+load_speaker_embedding: True
+persistent_workers: True
+max_duration: 4
+transform: True
+add_background_noise: True
+generate_speaker_dict: True

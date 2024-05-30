@@ -1,0 +1,5 @@
+# Generates a log of enhanced tracks along with a copy of the mixture and ground truth signals
+audio_sample_logger:
+  _target_: src.callbacks.AudioSampleLogger
+  output_dir: ${paths.output_dir}/samples
+  num_samples: 32

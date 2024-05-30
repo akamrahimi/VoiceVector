@@ -1,0 +1,34 @@
+_target_: src.models.avEmbeddingModule.AVEmbeddingModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 3e-4
+  # weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 6e-1
+  patience: 3
+  verbose: True
+
+net:
+  _target_: src.models.components.EmbeddingAV.EmbeddingAV
+  chin: 1
+  chout: 1
+  hidden: 48
+  depth: 5
+  kernel_size: 8
+  stride: 4
+  padding: 2
+  growth: 2
+  max_hidden: 10_000
+  normalize: True
+  glu: True
+  floor: 1e-3
+  video_chin: 512
+  d_hid:  532
+  nlayers:  3
+  nhead: 8
