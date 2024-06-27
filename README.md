@@ -43,10 +43,8 @@ The script `src/train.php` allows you to train the model on your custom dataset.
     - `voicevectorav`: Operates on speaker embeddings generated from silent video (lip movements).
     - `voicevectoravem`: Operates on speaker embeddings generated from noisy mixture and video features (combined audiovisual cues).
     - `voicevectorivem`: Operates on speaker embeddings generated from noisy mixture and silent video features and face images.
-    - - `voicevectorvem`: Operates on speaker embeddings generated from noisy mixture and silent video only.
-- `init_from` (optional): Path to a pre-trained model checkpoint for resuming training. Skip this for training from scratch.
-- `data.load_features` (optional): Set to `True` if training a model that utilizes video features.
-- `data.add_background_noise` (optional): Set to `True` to add noise from the `DNS` dataset during training.
+    - `voicevectorvem`: Operates on speaker embeddings generated from noisy mixture and silent video only.
+
 
 **Example Training Command:**
 
@@ -56,32 +54,54 @@ python src/train.php model=voicevectorae init_from=checkpoints/ae.ckpt data.load
 
 ### Evaluating the Model
 
-You can evaluate the performance of our trained models using the following commands. The model weights can be downloaded from [here](https://drive.google.com/drive/folders/1nOloDB-lbgKE3LChSxCnVhuUAgUMOR-_?usp=sharing)
+This section explains how to evaluate the performance of the trained models on separating a target speaker in noisy audio recordings. 
 
-#### Using Audio Embedding Only - LRS3 Dataset
-```bash
-python src/eval.py init_from=checkpoints/ae.ckpt data=lrs3 seed=2038 data.batch_size=60
-```
+**Download Model Weights:**
 
-#### Using Audio Embeddings - Librispeech Dataset
-```bash
-python src/eval.py init_from=checkpoints/ae.ckpt data=librispeech seed=2038 data.batch_size=60
-```
+Before running the commands, download the model weights from [here](https://drive.google.com/drive/folders/1nOloDB-lbgKE3LChSxCnVhuUAgUMOR-_?usp=sharing).
 
-#### Using Multimodal Audio-Visual Model on Noisy Audio
-```bash
-python src/eval.py model=voicevectoravem2 init_from=checkpoints/avem3.pth seed=2038 data.batch_size=25
-```
+**Running the Evaluation Script:**
 
-#### For Visual Model on Silent Videos
-```bash
-python src/eval.py model=voicevectorvem init_from=checkpoints/vem.pth seed=2038 data.batch_size=25
-```
+The provided commands use the `src/eval.py` script to assess the models. Let's break down the meaning of each option:
 
-#### For Visual Model on Silent Videos and face images
-```bash
-python src/eval.py model=voicevectorivem init_from=checkpoints/ivem.pth seed=2038 data.batch_size=25
-```
+* `init_from`: This specifies the file containing the pre-trained model weights (downloaded from the link).
+* `data`: This defines the dataset to be used for evaluation (either "lrs3" or "librispeech").
+* `seed`: This sets a random seed for reproducibility (set to 2038 in the examples).
+* `data.batch_size`: This controls the number of audio samples processed together (either 60 or 25 depending on the model).
+
+**Specific Evaluations:**
+
+The following commands showcase different scenarios for evaluating speaker separation:
+
+1. **Clean Audio Embeddings (LRS3 Dataset):**
+   ```bash
+   python src/eval.py init_from=checkpoints/ae.ckpt data=lrs3 seed=2038 data.batch_size=60
+   ```
+   This evaluates how well the model separates speakers using embeddings generated from **clean audio only** on the LRS3 dataset.
+
+2. **Clean Audio Embeddings (LibriSpeech Dataset):**
+   ```bash
+   python src/eval.py init_from=checkpoints/ae.ckpt data=librispeech seed=2038 data.batch_size=60
+   ```
+   Similar to the first example, this evaluates speaker separation using clean audio embeddings, but on the LibriSpeech dataset.
+
+3. **Visual and Noisy Audio Embeddings:**
+   ```bash
+   python src/eval.py model=voicevectoravem2 init_from=checkpoints/avem3.pth seed=2038 data.batch_size=25
+   ```
+   Here, the model leverages speaker embeddings generated from a combination of **visual cues and noisy audio**. The "voicevectoravem2" model is used with weights loaded from "checkpoints/avem3.pth". Note the smaller batch size (25) potentially due to the increased complexity of this model.
+
+4. **Visual Embeddings Only (Silent Videos):**
+   ```bash
+   python src/eval.py model=voicevectorvem init_from=checkpoints/vem.pth seed=2038 data.batch_size=25
+   ```
+   This scenario tests speaker separation using embeddings derived solely from **visual cues** (from silent videos). The "voicevectorvem" model is used with weights from "checkpoints/vem.pth".
+
+5. **Visual and Face Embeddings:**
+   ```bash
+   python src/eval.py model=voicevectorivem init_from=checkpoints/ivem.pth seed=2038 data.batch_size=25
+   ```
+   The final example evaluates separation based on embeddings incorporating both **visual cues and face images**. The "voicevectorivem" model is used with weights from "checkpoints/ivem.pth".
 
 ## Summary
 
