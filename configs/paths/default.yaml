@@ -42,14 +42,4 @@ lrs2_speaker_emb_root: ${paths.root_dir}/../../scratch/lrs2_embeddings/
 
 # path to DNS noise audio files
 noise_dir: ${paths.root_dir}/../../scratch/DNS/noise/
-
-# path to model checkpoints
-# voiceformer: ${paths.root_dir}/../../../../work/akam/readToListern/checkpointlr3-2s-v2-3layer-46.ckpt
-# voiceformer: ${paths.root_dir}/../../../../work/akam/readToListern/checkpointlr2-2s-v20-105.ckpt
-voiceformer: ${paths.root_dir}/../../../../work/akam/readToListern/2022-05-20/V227LS23-2S/checkpoints/epoch22-step33206.ckpt 
-voiceformerav: ${paths.root_dir}/../../../../work/akam/codes/speaker_separation/outputs/VF27A-2SPN14/checkpoints/epoch154-step742621.ckpt
-voiceformerav23: ${paths.root_dir}/../../../../work/akam/readToListern/checkpointlr2-2s-v223-81.ckpt
-demucs: ${paths.root_dir}/pretrained_models/dns48-denoiser.th
-voicformerAVnew: ${paths.root_dir}/logs/train/runs/2023-05-21/07-21-52/checkpoints/epoch_057.ckpt
 speaker_embedding: ${paths.root_dir}/pretrained_models/EncoderClassifier-8f6f7fdaa9628acf73e21ad1f99d5f83/embedding_model.ckpt
-

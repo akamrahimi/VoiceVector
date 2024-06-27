@@ -5,7 +5,7 @@
 defaults:
   - _self_
   - data: lrs3.yaml
-  - model: voiceformeravem2.yaml
+  - model: voicevectorae.yaml
   - callbacks: default.yaml
   - logger: null # set logger here or use command line (e.g. `python train.py logger=tensorboard`)
   - trainer: gpu.yaml

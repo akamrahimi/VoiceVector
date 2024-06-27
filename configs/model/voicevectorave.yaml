@@ -1,0 +1,32 @@
+_target_: src.models.voiceFormerModule.VoiceFormerModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 3e-4
+  # weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 6e-1
+  patience: 2
+
+net:
+  _target_: src.models.components.voiceFormerAVE.VoiceFormerAVE
+  chout: 1
+  hidden: 48
+  depth: 5
+  kernel_size: 8
+  stride: 4
+  padding: 2
+  growth: 2
+  max_hidden: 10_000
+  normalize: true
+  glu: true
+  floor: 1e-3
+  video_chin: 512
+  d_hid :  532
+  num_encoder_layers : 3 
+  num_heads :  8
