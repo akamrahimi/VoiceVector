@@ -56,7 +56,7 @@ python src/train.php model=voicevectorae init_from=checkpoints/ae.ckpt data.load
 
 ### Evaluating the Model
 
-You can evaluate the performance of our trained models using the following commands. The model weights can be downloaded from "[here](https://drive.google.com/drive/folders/1nOloDB-lbgKE3LChSxCnVhuUAgUMOR-_?usp=sharing)"
+You can evaluate the performance of our trained models using the following commands. The model weights can be downloaded from [here](https://drive.google.com/drive/folders/1nOloDB-lbgKE3LChSxCnVhuUAgUMOR-_?usp=sharing)
 
 #### Using Audio Embedding Only - LRS3 Dataset
 ```bash
