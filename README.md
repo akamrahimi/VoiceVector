@@ -59,7 +59,12 @@ You can evaluate the performance of our trained models using the following comma
 
 #### Using Audio Embedding Only - LRS2 Dataset
 ```bash
-python src/eval.py init_from=checkpoints/ae.ckpt data=lrs2_data seed=2038 data.batch_size=60
+python src/eval.py init_from=checkpoints/ae.ckpt data=lrs2 seed=2038 data.batch_size=60
+```
+
+#### Using Audio Embedding Only - LRS3 Dataset
+```bash
+python src/eval.py init_from=checkpoints/ae.ckpt data=lrs3 seed=2038 data.batch_size=60
 ```
 
 #### Using Audio Embeddings - Librispeech Dataset
