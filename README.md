@@ -92,10 +92,11 @@ This repository provides resources and tools for training and evaluating models 
 Please cite our paper if you use this repository for your research:
 
 ```bibtex
-@article{rahimi2024voicevector,
-  title={VOICEVECTOR: Multimodal Enrolment Vectors for Speaker Separation},
-  author={Rahimi, A. and others},
-  journal={URL: https://www.robots.ox.ac.uk/~vgg/publications/2024/Rahimi24/rahimi24.pdf},
-  year={2024}
+ @InProceedings{Rahimi24,
+    author    = "Akam Rahimi, Triantafyllos Afouras and Andrew Zisserman",
+    title     = "VoiceVector: Multimodal Enrolment Vectors for Speaker Separation",
+    institution  = "Department of Engineering Science, University of Oxford",
+    booktitle = "ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
+    year      = "2024",
 }
 ```
