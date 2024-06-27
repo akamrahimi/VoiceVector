@@ -38,9 +38,11 @@ Our model was trained on datasets like LRS2 and LRS3, which contain audio and vi
 The script `src/train.php` allows you to train the model on your custom dataset. Here's an explanation of the command-line arguments:
 
 - `model`: Select the model type:
-    - `voiceformerae`: Operates on speaker embeddings generated from clean audio.
-    - `voiceformerav`: Operates on speaker embeddings generated from silent video (lip movements).
-    - `voiceformeravem`: Operates on speaker embeddings generated from noisy mixture and video features (combined audiovisual cues).
+    - `voicevectorae`: Operates on speaker embeddings generated from clean audio.
+    - `voicevectorav`: Operates on speaker embeddings generated from silent video (lip movements).
+    - `voicevectoravem`: Operates on speaker embeddings generated from noisy mixture and video features (combined audiovisual cues).
+    - `voicevectorivem`: Operates on speaker embeddings generated from noisy mixture and silent video features and face images.
+    - - `voicevectorvem`: Operates on speaker embeddings generated from noisy mixture and silent video only.
 - `init_from` (optional): Path to a pre-trained model checkpoint for resuming training. Skip this for training from scratch.
 - `data.load_features` (optional): Set to `True` if training a model that utilizes video features.
 - `data.add_background_noise` (optional): Set to `True` to add noise from the `DNS` dataset during training.
@@ -48,7 +50,7 @@ The script `src/train.php` allows you to train the model on your custom dataset.
 **Example Training Command:**
 
 ```bash
-python src/train.php model=voiceformerae init_from=logs/train/runs/2023-09-05/23-26-44/checkpoints/last.ckpt data.load_features=False data.batch_size=65 data.add_background_noise=True
+python src/train.php model=voicevectorae init_from=checkpoints/ae.ckpt data.load_features=False data.batch_size=65 data.add_background_noise=True
 ```
 
 ### Evaluating the Model
@@ -57,22 +59,27 @@ You can evaluate the performance of our trained models using the following comma
 
 #### Using Audio Embedding Only - LRS2 Dataset
 ```bash
-python src/eval.py init_from=logs/train/runs/2023-09-05/23-26-44/checkpoints/last.ckpt data=lrs2_data seed=2038 data.batch_size=60
+python src/eval.py init_from=checkpoints/ae.ckpt data=lrs2_data seed=2038 data.batch_size=60
 ```
 
 #### Using Audio Embeddings - Librispeech Dataset
 ```bash
-python src/eval.py init_from=logs/train/runs/2023-09-05/23-26-44/checkpoints/last.ckpt data=librispeech seed=2038 data.batch_size=60
+python src/eval.py init_from=checkpoints/ae.ckpt data=librispeech seed=2038 data.batch_size=60
 ```
 
 #### Using Multimodal Audio-Visual Model on Noisy Audio
 ```bash
-python src/eval.py model=voiceformeravem2 init_from=avem3.pth seed=2038 data.batch_size=25
+python src/eval.py model=voicevectoravem2 init_from=checkpoints/avem3.pth seed=2038 data.batch_size=25
 ```
 
-#### For Visual Model on Silent Videos and Images
+#### For Visual Model on Silent Videos
 ```bash
-python src/eval.py model=voiceformervem init_from=vem.pth seed=2038 data.batch_size=25
+python src/eval.py model=voicevectorvem init_from=checkpoints/vem.pth seed=2038 data.batch_size=25
+```
+
+#### For Visual Model on Silent Videos and images
+```bash
+python src/eval.py model=voicevectorivem init_from=checkpoints/ivem.pth seed=2038 data.batch_size=25
 ```
 
 ## Summary
