@@ -17,7 +17,7 @@ The repository includes a test dataset organized in a directory structure as fol
 
 **Training Data Preparation**
 
-Our model was trained on LRS3 datasets, which contain audio and video recordings of multiple speakers. Here's an overview of the training data preparation process:
+Our model was trained on LRS3 dataset, which contain audio and video recordings of multiple speakers. Here's an overview of the training data preparation process:
 
 1. **JSON Files**: The `data` directory stores JSON files containing metadata for each audio/video file. Each record includes:
     - Path to the audio/video file.
@@ -27,8 +27,8 @@ Our model was trained on LRS3 datasets, which contain audio and video recordings
 2. **Noisy Mixtures**: During training, audio files from different speakers are mixed to create synthetic noisy mixtures. Additional noise may be added from the `DNS.json` file (also found in `data`).
 
 3. **Speaker Embeddings**:
-    - Positive embeddings are generated from distinct audio recordings of the target speaker (but not from the same recording as the mixture).
-    - Negative embeddings are generated from audio recordings of other speakers present in the mixture (again not from the same recording as the mixture).
+    - Positive embeddings are generated from distinct audio recordings of the target speaker (but not from the same recording used to create the mixture).
+    - Negative embeddings are generated from audio recordings of other speakers present in the mixture (again not from the same recording in the mixture).
 
 4. **Model Training**: The model learns to extract speaker-specific features from the embeddings and utilise them to retrieve the target speaker's voice from the noisy mixture.
 
