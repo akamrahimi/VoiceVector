@@ -16,7 +16,7 @@ The repository includes a test dataset organized in a directory structure as fol
 
 **Training Data Preparation**
 
-Our model was trained on datasets like LRS2 and LRS3, which contain audio and video recordings of multiple speakers. Here's an overview of the training data preparation process:
+Our model was trained on LRS3 datasets, which contain audio and video recordings of multiple speakers. Here's an overview of the training data preparation process:
 
 1. **JSON Files**: The `data` directory stores JSON files containing metadata for each audio/video file. Each record includes:
     - Path to the audio/video file.
