@@ -57,11 +57,6 @@ python src/train.php model=voicevectorae init_from=checkpoints/ae.ckpt data.load
 
 You can evaluate the performance of our trained models using the following commands:
 
-#### Using Audio Embedding Only - LRS2 Dataset
-```bash
-python src/eval.py init_from=checkpoints/ae.ckpt data=lrs2 seed=2038 data.batch_size=60
-```
-
 #### Using Audio Embedding Only - LRS3 Dataset
 ```bash
 python src/eval.py init_from=checkpoints/ae.ckpt data=lrs3 seed=2038 data.batch_size=60
