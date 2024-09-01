@@ -112,7 +112,7 @@ This repository provides resources and tools for training and evaluating models 
 Please cite our paper if you use this repository for your research:
 
 ```bibtex
- @INPROCEEDINGS{10627309,
+ @INPROCEEDINGS{Rahimi24,
   author={Rahimi, Akam and Afouras, Triantafyllos and Zisserman, Andrew},
   booktitle={2024 IEEE International Conference on Acoustics, Speech, and Signal Processing Workshops (ICASSPW)}, 
   title={Voicevector: Multimodal Enrolment Vectors for Speaker Separation}, 
