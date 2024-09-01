@@ -112,11 +112,12 @@ This repository provides resources and tools for training and evaluating models 
 Please cite our paper if you use this repository for your research:
 
 ```bibtex
- @InProceedings{Rahimi24,
-    author    = "Akam Rahimi, Triantafyllos Afouras and Andrew Zisserman",
-    title     = "VoiceVector: Multimodal Enrolment Vectors for Speaker Separation",
-    institution  = "Department of Engineering Science, University of Oxford",
-    booktitle = "ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)",
-    year      = "2024",
-}
+ @INPROCEEDINGS{10627309,
+  author={Rahimi, Akam and Afouras, Triantafyllos and Zisserman, Andrew},
+  booktitle={2024 IEEE International Conference on Acoustics, Speech, and Signal Processing Workshops (ICASSPW)}, 
+  title={Voicevector: Multimodal Enrolment Vectors for Speaker Separation}, 
+  year={2024},
+  pages={785-789},
+  keywords={Visualization;Lips;Conferences;Noise;Neural networks;Transformers;Vectors;Speech separation;speaker embedding},
+  doi={10.1109/ICASSPW62465.2024.10627309}}
 ```
