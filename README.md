@@ -5,7 +5,7 @@ This repository provides the official implementation of the research paper "[VOI
 ## Repository Contents
 
 
-**Test Data (LRS2 and LRS3)**
+**Test Data (LRS2)**
 
 The repository includes a test dataset organized in a directory structure as follows:
 
@@ -17,7 +17,7 @@ The repository includes a test dataset organized in a directory structure as fol
 
 **Training Data Preparation**
 
-Our model was trained on LRS3 dataset, which contain audio and video recordings of multiple speakers. Here's an overview of the training data preparation process:
+Our model was trained on LRS2 dataset, which contain audio and video recordings of multiple speakers. Here's an overview of the training data preparation process:
 
 1. **JSON Files**: The `data` directory stores JSON files containing metadata for each audio/video file. Each record includes:
     - Path to the audio/video file.
@@ -65,7 +65,7 @@ Before running the commands, download the model weights from [here](https://driv
 The provided commands use the `src/eval.py` script to assess the models. Let's break down the meaning of each option:
 
 * `init_from`: This specifies the file containing the pre-trained model weights (downloaded from the link).
-* `data`: This defines the dataset to be used for evaluation (either "lrs3" or "librispeech").
+* `data`: This defines the dataset to be used for evaluation (either "lrs2" or "librispeech").
 * `seed`: This sets a random seed for reproducibility (set to 2038 in the examples).
 * `data.batch_size`: This controls the number of audio samples processed together (either 60 or 25 depending on the model).
 
@@ -73,11 +73,11 @@ The provided commands use the `src/eval.py` script to assess the models. Let's b
 
 The following commands showcase different scenarios for evaluating speaker separation:
 
-1. **Clean Audio Embeddings (LRS3 Dataset):**
+1. **Clean Audio Embeddings (LRS2 Dataset):**
    ```bash
-   python src/eval.py init_from=checkpoints/ae.ckpt data=lrs3 seed=2038 data.batch_size=60
+   python src/eval.py init_from=checkpoints/ae.ckpt data=lrs2 seed=2038 data.batch_size=60
    ```
-   This evaluates how well the model separates speakers using embeddings generated from **clean audio only** on the LRS3 dataset.
+   This evaluates how well the model separates speakers using embeddings generated from **clean audio only** on the LRS2 dataset.
 
 2. **Clean Audio Embeddings (LibriSpeech Dataset):**
    ```bash
